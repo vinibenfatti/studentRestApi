@@ -15,9 +15,9 @@ public class BasicAuthenticationIntegrationTest {
     public void BasicAuthenticationTest_whenStatusCode_200(){
         given().auth()
                 .basic("admin", "admin")
-                .when()
+        .when()
                 .get("http://localhost:8080/api/v1/student")
-                .then()
+        .then()
                 .assertThat()
                 .statusCode(HttpStatus.OK.value());
 
@@ -26,9 +26,9 @@ public class BasicAuthenticationIntegrationTest {
     public void BasicAuthenticationTest_whenStatusCode_401(){
         given().auth()
                 .basic("", "")
-                .when()
+        .when()
                 .get("http://localhost:8080/api/v1/student")
-                .then()
+        .then()
                 .assertThat()
                 .statusCode(HttpStatus.UNAUTHORIZED.value());
 
@@ -37,9 +37,9 @@ public class BasicAuthenticationIntegrationTest {
     public void BasicAuthenticationTest_whenStatusCode_404(){
         given().auth()
                 .basic("admin", "admin")
-                .when()
+        .when()
                 .get("http://localhost:8080/api/v1/stud")
-                .then()
+        .then()
                 .assertThat()
                 .statusCode(HttpStatus.NOT_FOUND.value());
 

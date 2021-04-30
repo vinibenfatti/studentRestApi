@@ -54,9 +54,9 @@ public class StudentControllerIntegrationTest {
                         given().log().all()
                                 .auth()
                                 .basic("admin", "admin")
-                                .when().log().all()
+                        .when().log().all()
                                 .get(uri +  "/api/v1/student")
-                                .then().log().all()
+                        .then().log().all()
                                 .statusCode(HttpStatus.OK.value())
                                 .extract()
                                 .as(Student[].class));
@@ -70,9 +70,9 @@ public class StudentControllerIntegrationTest {
         given().log().all()
                 .auth()
                 .basic("admin", "admin")
-                .when().log().all()
+        .when().log().all()
                 .get(uri +  "/api/v1/stud")
-                .then().log().all()
+        .then().log().all()
                 .statusCode(HttpStatus.NOT_FOUND.value());
     }
     @Test
@@ -81,9 +81,9 @@ public class StudentControllerIntegrationTest {
         given().log().all()
                 .auth()
                 .basic("", "")
-                .when().log().all()
+        .when().log().all()
                 .get(uri +  "/api/v1/student")
-                .then().log().all()
+        .then().log().all()
                 .statusCode(HttpStatus.UNAUTHORIZED.value());
     }
     @Test
@@ -98,9 +98,9 @@ public class StudentControllerIntegrationTest {
                         .auth()
                         .basic("admin", "admin")
                         .contentType("application/json")
-                        .when().log().all()
+                .when().log().all()
                         .get(uri +  "/api/v1/student/"+1L)
-                        .then().log().all()
+                .then().log().all()
                         .statusCode(HttpStatus.OK.value())
                         .extract()
                         .as(Student[].class));
@@ -128,9 +128,9 @@ public class StudentControllerIntegrationTest {
                         .auth()
                         .basic("admin", "admin")
                         .body(request)
-                        .when().log().all()
+                .when().log().all()
                         .post(uri +  "/api/v1/student")
-                        .then().log().all()
+                .then().log().all()
                         .assertThat()
                         .extract()
                         .response();
@@ -150,9 +150,9 @@ public class StudentControllerIntegrationTest {
                         .auth()
                         .basic("admin", "admin")
                         .header("Content-type", "application/json")
-                        .when().log().all()
+                .when().log().all()
                         .delete(uri +  "/api/v1/student/" + testStudent.getId())
-                        .then()
+                .then()
                         .extract()
                         .response();
 
@@ -180,9 +180,9 @@ public class StudentControllerIntegrationTest {
                                 .auth()
                                 .basic("admin", "admin")
                                 .header("Content-type", "application/json")
-                                .when().log().all()
+                        .when().log().all()
                                 .put(uri +  "/api/v1/student/" + testStudent.getId() +  "?name=" + newName + "&email=" + newEmail)
-                                .then()
+                        .then()
                                 .statusCode(HttpStatus.OK.value())
                                 .extract()
                                 .as(Student[].class));
